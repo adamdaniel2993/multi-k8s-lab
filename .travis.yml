@@ -1,6 +1,3 @@
-os: linux
-dist: xenial
-language: ruby
 services:
   - docker
 env:
