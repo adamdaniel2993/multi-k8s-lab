@@ -18,15 +18,12 @@ before_install:
   - gcloud container clusters get-credentials multi-k8s-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t adamdanielf/react-test -f ./client/Dockerfile.dev ./client
-  - docker push adamdanielf/react-test
 
 script:
   - docker run adamdanielf/react-test npm test -- --coverage
 
 deploy:
   provider: script
-  script: |
-    chmod 755 deploy.sh
-    ./deploy.sh
+  script: bash ./deploy.sh
   on:
     branch: main
