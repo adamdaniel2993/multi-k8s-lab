@@ -24,6 +24,8 @@ script:
 
 deploy:
   provider: script
-  script: bash ./deploy.sh
+  script: |
+    chmod 755 deploy.sh
+    ./deploy.sh
   on:
     branch: main
